@@ -1,290 +1,347 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal | Cafter Percy Advocacia</title>
-<style>
-    /* Configurações Gerais de Fonte e Cores */
-    :root {
-        --primary-color: #0f172a; /* Azul Escuro Percy */
-        --accent-color: #3b82f6;  /* Azul Brilhante (Tech/Gemini) */
-        --bg-color: #f8fafc;
-        --card-bg: #ffffff;
-        --text-color: #334155;
-        --title-color: #1e293b;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percy Contabilidade & Advocacia - Seus Direitos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    body {
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        background-color: var(--bg-color);
-        margin: 0;
-        padding: 20px;
-        line-height: 1.6;
-    }
+    <style>
+        /* --- ESTILOS GERAIS (CSS EMBUTIDO) --- */
+        :root {
+            --primary-dark: #0f172a; /* Azul Escuro Profundo */
+            --gold-accent: #d4af37; /* Dourado Premium */
+            --text-gray: #4b5563;
+            --white: #ffffff;
+            --bg-light: #f8fafc;
+        }
 
-    /* Container Principal */
-    .process-log-container {
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Header do Portal com Perfil */
-    .portal-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 40px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #e2e8f0;
-        gap: 20px;
-    }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--white);
+            color: var(--primary-dark);
+            overflow-x: hidden;
+        }
 
-    .profile-image-container {
-        position: relative;
-        width: 80px;
-        height: 80px;
-    }
+        /* Tipografia */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
 
-    .profile-image {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover; /* Garante que a foto não distorça */
-        border: 3px solid var(--card-bg);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
+        a { text-decoration: none; }
+        ul { list-style: none; }
 
-    .status-indicator {
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-        width: 15px;
-        height: 15px;
-        background-color: #22c55e; /* Verde Online */
-        border: 2px solid white;
-        border-radius: 50%;
-    }
+        /* --- HEADER (TOPO) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--white);
+            position: relative;
+            z-index: 100;
+        }
 
-    .header-text h1 {
-        font-size: 1.5rem;
-        color: var(--primary-color);
-        margin: 0 0 5px 0;
-    }
+        .logo-container img {
+            height: 50px; /* Ajuste conforme sua logo real */
+            width: auto;
+        }
 
-    .header-text p {
-        margin: 0;
-        color: var(--text-color);
-        font-size: 0.9rem;
-    }
+        nav ul {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
 
-    .tag-portal {
-        background: var(--accent-color);
-        color: white;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        vertical-align: middle;
-        margin-left: 10px;
-    }
+        nav a {
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
 
-    /* A Linha Vertical */
-    .process-log-container::before {
-        content: '';
-        position: absolute;
-        top: 130px; /* Ajustado para começar após o header */
-        bottom: 0;
-        left: 20px;
-        width: 2px;
-        background: #e2e8f0;
-        z-index: 0;
-    }
+        nav a:hover { color: var(--gold-accent); }
 
-    /* Cada Item do Processo */
-    .process-step {
-        position: relative;
-        margin-bottom: 25px;
-        padding-left: 50px;
-        opacity: 0;
-        animation: slideIn 0.5s ease-out forwards;
-    }
+        .btn-header {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
 
-    /* Animação em cascata */
-    .process-step:nth-child(1) { animation-delay: 0.1s; }
-    .process-step:nth-child(2) { animation-delay: 0.2s; }
-    .process-step:nth-child(3) { animation-delay: 0.3s; }
-    .process-step:nth-child(4) { animation-delay: 0.4s; }
-    .process-step:nth-child(5) { animation-delay: 0.5s; }
-    .process-step:nth-child(6) { animation-delay: 0.6s; }
-    .process-step:nth-child(7) { animation-delay: 0.7s; }
-    .process-step:nth-child(8) { animation-delay: 0.8s; }
-    .process-step:nth-child(9) { animation-delay: 0.9s; }
-    .process-step:nth-child(10) { animation-delay: 1.0s; }
-    .process-step:nth-child(11) { animation-delay: 1.1s; }
-    .process-step:nth-child(12) { animation-delay: 1.2s; }
+        .btn-header:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
 
-    /* A "Bolinha" (Ícone) na Linha */
-    .process-step::after {
-        content: '';
-        position: absolute;
-        left: 14px;
-        top: 5px;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: white;
-        border: 2px solid var(--accent-color);
-        z-index: 1;
-        box-shadow: 0 0 0 4px var(--bg-color);
-    }
+        /* --- HERO SECTION (PRINCIPAL) --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5% 100px 5%;
+            background: linear-gradient(135deg, #fff 50%, #fcfcfc 100%);
+            flex-wrap: wrap;
+        }
 
-    /* O Card de Conteúdo */
-    .step-content {
-        background: var(--card-bg);
-        padding: 15px 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        border: 1px solid #e2e8f0;
-        transition: transform 0.2s ease;
-    }
+        /* Lado Esquerdo - Textos */
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            padding-right: 40px;
+        }
 
-    .step-content:hover {
-        transform: translateX(5px);
-        border-color: var(--accent-color);
-    }
+        .badge {
+            display: inline-block;
+            background: #fff8e1; /* Fundo amarelinho suave */
+            color: #bfa15f;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid #fae6b1;
+        }
 
-    .step-title {
-        margin: 0 0 8px 0;
-        font-size: 1rem;
-        color: var(--title-color);
-        font-weight: 600;
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
 
-    .step-text {
-        margin: 0;
-        font-size: 0.95rem;
-        color: var(--text-color);
-        text-align: justify;
-    }
+        .hero h1 span {
+            color: var(--gold-accent); /* Destaque Dourado */
+        }
 
-    @keyframes slideIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+        .hero p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
 
-    /* Responsividade para Mobile */
-    @media (max-width: 600px) {
-        .portal-header {
-            flex-direction: column;
+        /* Botões */
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-dark);
+            border: 2px solid #e5e7eb;
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover { background-color: #1e293b; }
+        .btn-outline:hover { border-color: var(--primary-dark); }
+
+        /* Ícones de Confiança */
+        .trust-icons {
+            display: flex;
+            gap: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+
+        .trust-item {
             text-align: center;
         }
-        .process-log-container::before {
-            top: 240px; /* Ajuste da linha no mobile */
+        
+        .trust-item i {
+            display: block;
+            font-size: 1.2rem;
+            color: #9ca3af;
+            margin-bottom: 8px;
         }
-    }
-</style>
+
+        .trust-item span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+            font-weight: 700;
+        }
+
+        /* Lado Direito - Imagem */
+        .hero-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Moldura Dourada Decorativa atrás */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: 40px;
+            width: 100px;
+            height: 100px;
+            border-top: 5px solid var(--gold-accent);
+            border-right: 5px solid var(--gold-accent);
+            z-index: 0;
+        }
+
+        .image-wrapper {
+            position: relative;
+            z-index: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 450px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Card Flutuante "Especialista Disponível" */
+        .floating-card {
+            position: absolute;
+            bottom: 30px;
+            right: -20px;
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .check-circle {
+            width: 35px;
+            height: 35px;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-text strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+        }
+        .card-text span {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+
+        /* Responsividade para Celular */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; }
+            nav ul { display: none; } /* Simplificado para mobile */
+            .hero { flex-direction: column; text-align: center; padding-top: 30px; }
+            .hero-content { padding-right: 0; margin-bottom: 50px; }
+            .cta-group { justify-content: center; }
+            .trust-icons { justify-content: center; }
+            .floating-card { right: 0; left: 0; margin: auto; width: max-content; bottom: -20px;}
+        }
+    </style>
 </head>
 <body>
 
-<div class="process-log-container">
-    
-    <div class="portal-header">
-        <div class="profile-image-container">
-            <img src="perfil-cafter.jpg" alt="Cafter Percy" class="profile-image">
-            <div class="status-indicator" title="Sistema Online"></div>
+    <header>
+        <div class="logo-container">
+            <img src="https://placehold.co/200x50/e2e8f0/0f172a?text=PERCY+LOGO" alt="Logo Percy Contabilidade">
         </div>
-        <div class="header-text">
-            <h1>Cafter Percy Advocacia <span class="tag-portal">PORTAL</span></h1>
-            <p><strong>Status do Sistema:</strong> Processando solicitação de análise...</p>
-        </div>
-    </div>
+        <nav>
+            <ul>
+                <li><a href="#">Áreas de Atuação</a></li>
+                <li><a href="#">O Escritório</a></li>
+                <li><a href="#" class="btn-header"><i class="fa-brands fa-whatsapp"></i> Análise Gratuita</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Analyzing Landing Page Needs</h3>
-            <p class="step-text">I'm currently focused on the specific requirements for Cafter Percy Advocacia's landing page. I've noted the provided logo image and will double-check for the attorney photo. My immediate priority is to understand the core message and visual style the firm wants to convey.</p>
-        </div>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">● Atendimento Especializado em Todo o Brasil</span>
+            
+            <h1>Seus Direitos Não <span>Podem Esperar</span></h1>
+            
+            <p>Escritório referência em Direito Trabalhista, Previdenciário e Social. Utilizamos tecnologia e expertise jurídica para garantir o que é seu por direito. Não deixe suas dúvidas virarem prejuízo.</p>
+            
+            <div class="cta-group">
+                <a href="#" class="btn-primary">
+                    <i class="fa-solid fa-gavel"></i> Avaliar Meu Caso Grátis
+                </a>
+                <a href="#" class="btn-outline">
+                    <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+                </a>
+            </div>
 
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Refining Image Assumptions</h3>
-            <p class="step-text">I'm now refining my assumptions. I have the logo and I confirmed the usage of the real lawyer photo (Cafter Percy) to ensure authenticity and trust, replacing any generic placeholders.</p>
+            <div class="trust-icons">
+                <div class="trust-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Sigilo Absoluto</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fa-solid fa-stopwatch"></i>
+                    <span>Análise Rápida</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <span>OAB Regular</span>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Generating Page Elements</h3>
-            <p class="step-text">I'm now generating initial ideas for the landing page elements. I've noted the need for a high-converting lead capture page for Cafter Percy Advocacia, targeting Labor, Social, and Social Security areas.</p>
+        <div class="hero-image">
+            <div class="image-wrapper">
+                <img src="https://placehold.co/400x500/0f172a/FFF?text=FOTO+DO+CAFTER" alt="Dr. Cafter Percy">
+            </div>
+
+            <div class="floating-card">
+                <div class="check-circle">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div class="card-text">
+                    <strong>Especialista Disponível</strong>
+                    <span>Agende sua análise agora</span>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Developing Interaction Flow</h3>
-            <p class="step-text">I'm now developing the interaction flow. Building on previous work, I've designed an interactive "Case Evaluation" tool. This tool acts as a lead magnet, offering a more engaging experience than a static form.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Crafting Landing Sections</h3>
-            <p class="step-text">I'm now crafting the landing page sections. I will ensure the design is professional and emphasizes trust. I've broken the page into seven sections including the lead magnet, services, and firm bio.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Refining Interaction Flow</h3>
-            <p class="step-text">I'm currently refining the interaction flow, incorporating qualifying questions before requesting contact details to leverage the commitment principle. I'll include a visual "Analyzing..." step.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Building Engaging Questions</h3>
-            <p class="step-text">I'm now building the engaging questions for the FAQ or quiz section. I'm focusing on crafting questions that are simple but also relevant to draw the user into the legal areas.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Analyzing Law Firm Landing Pages</h3>
-            <p class="step-text">I've been analyzing the content and structure of high-converting Brazilian law firm landing pages, focusing on Labor and Social Security law.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Designing the Onboarding Flow</h3>
-            <p class="step-text">I've been working on refining the "Pre-Analysis Tool" to better capture user intent. I am now incorporating a "Rights Calculator" to better fit the need to have a smoother "onboarding" process.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Structuring the Landing Page</h3>
-            <p class="step-text">I'm now focusing on the visual hierarchy. The logo and prominent WhatsApp button are set. The hero section with headline, subhead, and call to action is drafted.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Generating Visual Assets</h3>
-            <p class="step-text">Visual assets confirmed. The professional image of Cafter Percy is integrated into the secure client portal interface to maximize brand trust.</p>
-        </div>
-    </div>
-
-    <div class="process-step">
-        <div class="step-content">
-            <h3 class="step-title">Creating the Intake Tool</h3>
-            <p class="step-text">I'm currently building the interactive intake tool, focusing on making it dynamic and intuitive. I'm prioritizing the user journey, ensuring a smooth flow through tabs, dynamic questions, and a clear progress bar.</p>
-        </div>
-    </div>
-
-</div>
+    </section>
 
 </body>
 </html>
