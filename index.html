@@ -23,7 +23,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; } /* Rolagem suave para as âncoras */
+        html { scroll-behavior: smooth; }
         body { font-family: 'Lato', sans-serif; background-color: var(--white); color: var(--primary-dark); overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         a { text-decoration: none; }
@@ -39,7 +39,6 @@
             z-index: 100; 
             border-bottom: 1px solid rgba(255,255,255,0.1); 
             position: relative; 
-            /* Fixar header no topo para facilitar navegação */
             position: sticky;
             top: 0;
         }
@@ -144,38 +143,13 @@
         .option-card h3 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; }
         .option-card p { font-size: 0.85rem; color: var(--text-gray); line-height: 1.4; }
 
-        /* --- ESTILOS DOS CTAs DISCRETOS (Novos) --- */
-        .cta-subtle {
-            margin-top: 40px;
-            font-size: 0.95rem;
-            color: var(--text-gray);
-            text-align: center;
-        }
-        .cta-subtle a {
-            color: var(--primary-dark);
-            font-weight: 700;
-            border-bottom: 2px solid var(--gold-accent);
-            padding-bottom: 2px;
-            transition: 0.3s;
-        }
-        .cta-subtle a:hover {
-            color: var(--gold-accent);
-        }
-        /* CTA Específico para fundo escuro */
-        .cta-subtle-dark {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #94a3b8;
-            text-align: center;
-            display: block;
-        }
-        .cta-subtle-dark a {
-            color: var(--gold-accent);
-            font-weight: 700;
-            margin-left: 5px;
-        }
+        /* --- CTAs DISCRETOS --- */
+        .cta-subtle { margin-top: 40px; font-size: 0.95rem; color: var(--text-gray); text-align: center; }
+        .cta-subtle a { color: var(--primary-dark); font-weight: 700; border-bottom: 2px solid var(--gold-accent); padding-bottom: 2px; transition: 0.3s; }
+        .cta-subtle a:hover { color: var(--gold-accent); }
+        .cta-subtle-dark { margin-top: 30px; font-size: 0.9rem; color: #94a3b8; text-align: center; display: block; }
+        .cta-subtle-dark a { color: var(--gold-accent); font-weight: 700; margin-left: 5px; }
         .cta-subtle-dark a:hover { text-decoration: underline; }
-
 
         /* --- ÁREAS DE ATUAÇÃO --- */
         .areas-section { padding: 100px 5%; background-color: var(--white); text-align: center; }
@@ -192,8 +166,8 @@
         .feature-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-gray); display: flex; align-items: center; gap: 10px; }
         .feature-list li::before { content: '✓'; color: var(--gold-accent); font-weight: bold; }
 
-        /* --- A ESSÊNCIA --- */
-        .about-section { padding: 80px 5%; background-color: #f8fafc; display: flex; align-items: center; justify-content: center; gap: 60px; }
+        /* --- A ESSÊNCIA (COM ID PARA ROLAGEM) --- */
+        .about-section { padding: 80px 5%; background-color: #f8fafc; display: flex; align-items: center; justify-content: center; gap: 60px; scroll-margin-top: 100px; }
         .about-image { flex: 1; max-width: 550px; position: relative; }
         .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: block; }
         .experience-badge { position: absolute; bottom: -20px; right: -20px; background-color: var(--primary-dark); color: var(--gold-accent); padding: 20px 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
@@ -260,6 +234,21 @@
             font-size: 0.9rem;
             color: #94a3b8;
             line-height: 1.4;
+        }
+
+        /* Estilo para o endereço */
+        .address-footer {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 15px;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .address-footer i {
+            color: var(--gold-accent);
+            margin-top: 3px;
         }
 
         .footer-social {
@@ -338,6 +327,7 @@
             .experience-badge { right: 0; left: 0; margin: auto; width: max-content; bottom: -30px; }
             .mission-vision { grid-template-columns: 1fr; }
             .footer-content { flex-direction: column; gap: 30px; text-align: center; }
+            .address-footer { justify-content: center; }
             .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
             .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
         }
@@ -363,7 +353,7 @@
         <nav>
             <ul>
                 <li><a href="#triagem">Áreas de Atuação</a></li>
-                <li><a href="#">O Escritório</a></li>
+                <li><a href="#escritorio">O Escritório</a></li>
                 <li><a href="https://wa.me/5521999999999" class="btn-header" target="_blank"><i class="fa-brands fa-whatsapp"></i> Análise Gratuita</a></li>
             </ul>
         </nav>
@@ -450,7 +440,7 @@
         </div>
     </section>
 
-    <section class="about-section">
+    <section class="about-section" id="escritorio">
         <div class="about-image">
             <img src="escritorio-advocacia-nova-iguacu.png" alt="Escritório Percy Advocacia em Nova Iguaçu">
             <div class="experience-badge">
@@ -509,6 +499,11 @@
                 <span class="sub-footer">Advocacia Especializada</span>
                 <p class="loc-footer">Previdenciário e Trabalhista em Nova Iguaçu - RJ</p>
                 
+                <p class="address-footer">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Rua Dr. Paulo Fróes Machado, 29, Centro,<br>Nova Iguaçu - RJ, CEP 26255-170
+                </p>
+
                 <span class="cta-subtle-dark">
                     Precisa de ajuda urgente? <a href="https://wa.me/5521999999999" target="_blank">Fale agora</a>
                 </span>
@@ -516,7 +511,7 @@
             <div class="footer-social">
                 <a href="https://instagram.com/cafterpercy.adv" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/in/cafterpercyadv" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Cafter Percy Advocacia Especializada. Todos os direitos reservados.</p>
