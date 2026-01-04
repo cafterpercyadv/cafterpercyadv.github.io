@@ -35,23 +35,51 @@
             justify-content: space-between; 
             align-items: center; 
             padding: 15px 5%; 
-            background: var(--primary-dark); /* CORREÇÃO: Fundo Escuro */
+            background: var(--primary-dark); 
             z-index: 100; 
             border-bottom: 1px solid rgba(255,255,255,0.1); 
             position: relative; 
         }
 
-        .logo-container {
+        /* Container da Marca (Vídeo + Texto) */
+        .brand-container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Espaço entre o vídeo e o texto */
         }
 
-        /* Ajustes para links no fundo escuro */
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h2 {
+            margin: 0; 
+            font-size: 1.4rem; 
+            color: #fff; 
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .logo-text .sub-brand {
+            color: #d4af37; 
+            font-size: 0.7rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
+        .logo-text .location-brand {
+            color: #94a3b8; 
+            font-size: 0.65rem;
+            margin-top: 2px;
+        }
+
+        /* Navegação */
         nav ul { display: flex; gap: 30px; align-items: center; }
         
         nav a { 
-            color: var(--white); /* CORREÇÃO: Texto Branco */
+            color: var(--white); 
             font-weight: 600; 
             font-size: 0.9rem; 
             transition: 0.3s; 
@@ -59,7 +87,7 @@
         nav a:hover { color: var(--gold-accent); }
 
         .btn-header { 
-            background-color: var(--gold-accent); /* CORREÇÃO: Botão Dourado */
+            background-color: var(--gold-accent); 
             color: var(--primary-dark); 
             padding: 10px 25px; 
             border-radius: 50px; 
@@ -134,341 +162,3 @@
         .about-section { padding: 80px 5%; background-color: #f8fafc; display: flex; align-items: center; justify-content: center; gap: 60px; }
         .about-image { flex: 1; max-width: 550px; position: relative; }
         .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: block; }
-        .experience-badge { position: absolute; bottom: -20px; right: -20px; background-color: var(--primary-dark); color: var(--gold-accent); padding: 20px 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .experience-badge strong { display: block; font-size: 2rem; line-height: 1; font-family: 'Playfair Display', serif; }
-        .experience-badge span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #fff; }
-        .about-content { flex: 1; max-width: 600px; }
-        .about-content h2 { font-size: 2.5rem; margin-bottom: 25px; color: var(--primary-dark); }
-        .about-content p { color: var(--text-gray); line-height: 1.7; margin-bottom: 20px; font-size: 1.05rem; }
-        .mission-vision { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }
-        .mv-item h4 { font-size: 1.1rem; margin-bottom: 10px; color: var(--primary-dark); }
-        .mv-item p { font-size: 0.9rem; margin-bottom: 0; }
-
-        /* --- FAQ --- */
-        .faq-section { padding: 100px 5%; background-color: var(--white); text-align: center; }
-        .faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
-        .faq-item { margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: #fff; }
-        .faq-question { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--primary-dark); transition: 0.3s; }
-        .faq-question:hover { background-color: #f8fafc; color: var(--gold-accent); }
-        .faq-question i { transition: transform 0.3s; color: #cbd5e1; }
-        .faq-item.active .faq-question i { transform: rotate(180deg); color: var(--gold-accent); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background-color: #f8fafc; }
-        .faq-answer p { padding: 25px; color: var(--text-gray); line-height: 1.6; font-size: 0.95rem; border-top: 1px solid #e2e8f0; }
-
-        /* --- RODAPÉ REFINADO --- */
-        footer {
-            background-color: var(--primary-dark);
-            color: #fff;
-            padding: 60px 5% 30px 5%;
-            border-top: 4px solid var(--gold-accent);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 30px;
-        }
-
-        .footer-brand {
-            max-width: 400px;
-        }
-
-        .footer-brand h2 {
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-        
-        .footer-brand .sub-footer {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: var(--gold-accent);
-            text-transform: uppercase;
-            font-family: 'Lato', sans-serif;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .footer-brand .loc-footer {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            line-height: 1.4;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-social a {
-            color: #94a3b8;
-            font-size: 1.4rem;
-            transition: 0.3s;
-            background: rgba(255,255,255,0.05);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-social a:hover {
-            color: var(--gold-accent);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: #64748b;
-        }
-
-        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: #fff;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 999;
-            transition: 0.3s;
-            animation: pulse 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #20ba5a;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* Responsividade Mobile */
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 20px; text-align: center; }
-            nav ul { display: none; }
-            .hero { flex-direction: column; text-align: center; padding-top: 30px; }
-            .hero-content { padding-right: 0; margin-bottom: 50px; }
-            .cta-group { justify-content: center; }
-            .trust-icons { justify-content: center; }
-            .options-grid, .areas-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 2rem; }
-            .about-section { flex-direction: column; padding: 50px 5%; }
-            .experience-badge { right: 0; left: 0; margin: auto; width: max-content; bottom: -30px; }
-            .mission-vision { grid-template-columns: 1fr; }
-            .footer-content { flex-direction: column; gap: 30px; text-align: center; }
-            .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
-            .whatsapp-float { width: 50px; height: 50px; font-size: 1.5rem; bottom: 20px; right: 20px; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-container">
-            <video autoplay loop muted playsinline style="height: 80px; width: auto; border-radius: 4px;">
-                <source src="logo-cafterpercyadv.mp4" type="video/mp4">
-                <span style="color:white; font-weight:bold;">CAFTER PERCY ADVOCACIA</span>
-            </video>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Áreas de Atuação</a></li>
-                <li><a href="#">O Escritório</a></li>
-                <li><a href="https://wa.me/5521999999999" class="btn-header" target="_blank"><i class="fa-brands fa-whatsapp"></i> Análise Gratuita</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <span class="badge">● Atendimento Especializado em Nova Iguaçu e Região</span>
-            <h1>Seus Direitos Não <span>Podem Esperar</span></h1>
-            <p>Escritório referência em Direito Trabalhista e Previdenciário em Nova Iguaçu. Tecnologia e expertise jurídica para garantir o que é seu por direito.</p>
-            <div class="cta-group">
-                <a href="https://wa.me/5521999999999" class="btn-primary" target="_blank"><i class="fa-solid fa-gavel"></i> Avaliar Meu Caso Grátis</a>
-                <a href="https://wa.me/5521999999999" class="btn-outline" target="_blank"><i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp</a>
-            </div>
-            <div class="trust-icons">
-                <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span>Sigilo Absoluto</span></div>
-                <div class="trust-item"><i class="fa-solid fa-stopwatch"></i><span>Análise Rápida</span></div>
-                <div class="trust-item"><i class="fa-solid fa-scale-balanced"></i><span>OAB Regular</span></div>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="image-wrapper">
-                <img src="cafter-percy-advogado-nova-iguacu.png" alt="Dr. Cafter Percy - Advogado em Nova Iguaçu">
-            </div>
-            <div class="floating-card">
-                <div class="check-circle"><i class="fa-solid fa-check"></i></div>
-                <div class="card-text"><strong>Especialista Disponível</strong><span>Agende sua análise agora</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="triage-section">
-        <div class="triage-header">
-            <h4>Tecnologia Jurídica</h4>
-            <h2>Triagem Inicial Inteligente</h2>
-            <p>Preencha abaixo para ser direcionado ao especialista correto (On-boarding).</p>
-        </div>
-        <div class="triage-container">
-            <div class="progress-header">
-                <div class="step-indicator">ETAPA <span>1</span> DE 3</div>
-                <div class="security-badge"><i class="fa-solid fa-lock"></i> Ambiente Seguro</div>
-            </div>
-            <h3 class="question-title">Qual a natureza do seu problema?</h3>
-            <span class="question-subtitle">Selecione a área para personalizarmos seu atendimento.</span>
-            <div class="options-grid">
-                <div class="option-card" onclick="selectOption(this)">
-                    <div class="option-icon"><i class="fa-solid fa-briefcase"></i></div><h3>Trabalhista</h3><p>Demissões, horas extras e vínculos.</p>
-                </div>
-                <div class="option-card" onclick="selectOption(this)">
-                    <div class="option-icon"><i class="fa-solid fa-wheelchair"></i></div><h3>Previdenciário</h3><p>INSS, aposentadorias e BPC.</p>
-                </div>
-                <div class="option-card" onclick="selectOption(this)">
-                    <div class="option-icon"><i class="fa-solid fa-user-group"></i></div><h3>Social / Cível</h3><p>Família, consumidor e contratos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="areas-section">
-        <h2 class="section-title">Áreas de Especialização</h2>
-        <div class="areas-grid">
-            <div class="area-card">
-                <div class="icon-box"><i class="fa-solid fa-gavel"></i></div>
-                <h3>Direito Trabalhista</h3>
-                <ul class="feature-list"><li>Demissão sem justa causa</li><li>Horas extras</li><li>Acidentes</li></ul>
-            </div>
-            <div class="area-card highlight">
-                <span class="tag-highlight">Alta Procura</span>
-                <div class="icon-box"><i class="fa-solid fa-wheelchair"></i></div>
-                <h3>Direito Previdenciário</h3>
-                <ul class="feature-list"><li>Aposentadorias</li><li>Benefício BPC/LOAS</li><li>Auxílio Doença</li></ul>
-            </div>
-            <div class="area-card">
-                <div class="icon-box"><i class="fa-solid fa-gem"></i></div>
-                <h3>Social e Cível</h3>
-                <ul class="feature-list"><li>Família e Sucessões</li><li>Contratos</li><li>Consumidor</li></ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="about-section">
-        <div class="about-image">
-            <img src="escritorio-advocacia-nova-iguacu.png" alt="Escritório Percy Advocacia em Nova Iguaçu">
-            <div class="experience-badge">
-                <strong>15+</strong>
-                <span>Anos de Experiência</span>
-            </div>
-        </div>
-        <div class="about-content">
-            <h2>A Essência do Nosso Trabalho</h2>
-            <p>Na Cafter Percy Advocacia, atuando com força em Nova Iguaçu e região, não tratamos apenas de processos, tratamos de vidas. Entendemos que por trás de cada ação trabalhista ou previdenciária existe uma história de luta e um futuro a ser garantido.</p>
-            <p>Nossa metodologia de "Onboarding Jurídico" garante que você entenda cada passo do seu processo, com transparência total e comunicação direta.</p>
-            <div class="mission-vision">
-                <div class="mv-item">
-                    <h4>Missão</h4>
-                    <p>Democratizar o acesso à justiça de alta performance para trabalhadores e segurados do RJ.</p>
-                </div>
-                <div class="mv-item">
-                    <h4>Visão</h4>
-                    <p>Ser referência em advocacia humanizada e digital em Nova Iguaçu.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <h2 class="section-title">Dúvidas Frequentes</h2>
-        <p style="color: #64748b; margin-bottom: 40px;">Respostas rápidas para as principais questões.</p>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">Quanto custa a consulta? <i class="fa-solid fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>A análise inicial do seu caso é gratuita. Nossos honorários são cobrados, na maioria dos casos, apenas no êxito.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">O INSS negou meu benefício, o que faço? <i class="fa-solid fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>Não se desespere. Temos um time especialista em reverter decisões do INSS administrativa ou judicialmente.</p></div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Fui demitido, qual o prazo para entrar com ação? <i class="fa-solid fa-chevron-down"></i></div>
-                <div class="faq-answer"><p>Você tem até 2 anos após a demissão para entrar com a ação, mas recomendamos iniciar imediatamente.</p></div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h2>CAFTER PERCY</h2>
-                <span class="sub-footer">Advocacia Especializada</span>
-                <p class="loc-footer">Previdenciário e Trabalhista em Nova Iguaçu - RJ</p>
-            </div>
-            <div class="footer-social">
-                <a href="https://instagram.com/cafterpercy.adv" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Cafter Percy Advocacia Especializada. Todos os direitos reservados.</p>
-            <p>Desenvolvido com IA & Estratégia - TopOne Diamante.</p>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/5521999999999" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <script>
-        function selectOption(element) {
-            document.querySelectorAll('.option-card').forEach(card => {
-                card.style.borderColor = '#e2e8f0';
-                card.style.backgroundColor = '#fff';
-            });
-            element.style.borderColor = '#d4af37';
-            element.style.backgroundColor = '#fffbf0';
-        }
-
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-            question.addEventListener('click', () => {
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
-                    }
-                });
-                item.classList.toggle('active');
-                if (item.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                } else {
-                    answer.style.maxHeight = null;
-                }
-            });
-        });
-    </script>
-</body>
-</html>
