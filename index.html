@@ -23,7 +23,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; } /* Rolagem suave para as âncoras */
         body { font-family: 'Lato', sans-serif; background-color: var(--white); color: var(--primary-dark); overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         a { text-decoration: none; }
@@ -39,13 +39,15 @@
             z-index: 100; 
             border-bottom: 1px solid rgba(255,255,255,0.1); 
             position: relative; 
+            /* Fixar header no topo para facilitar navegação */
+            position: sticky;
+            top: 0;
         }
 
-        /* Container da Marca (Vídeo + Texto) */
         .brand-container {
             display: flex;
             align-items: center;
-            gap: 15px; /* Espaço entre o vídeo e o texto */
+            gap: 15px;
         }
 
         .logo-text {
@@ -75,7 +77,6 @@
             margin-top: 2px;
         }
 
-        /* Navegação */
         nav ul { display: flex; gap: 30px; align-items: center; }
         
         nav a { 
@@ -127,7 +128,7 @@
         .card-text span { font-size: 0.75rem; color: var(--text-gray); }
 
         /* --- TRIAGEM --- */
-        .triage-section { background-color: var(--primary-dark); padding: 80px 5%; text-align: center; color: var(--white); }
+        .triage-section { background-color: var(--primary-dark); padding: 80px 5%; text-align: center; color: var(--white); scroll-margin-top: 100px; }
         .triage-header h4 { color: var(--gold-accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 10px; }
         .triage-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
         .triage-header p { color: #94a3b8; max-width: 600px; margin: 0 auto 50px auto; }
@@ -142,6 +143,39 @@
         .option-icon { font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 15px; }
         .option-card h3 { font-size: 1.1rem; margin-bottom: 10px; font-weight: 700; }
         .option-card p { font-size: 0.85rem; color: var(--text-gray); line-height: 1.4; }
+
+        /* --- ESTILOS DOS CTAs DISCRETOS (Novos) --- */
+        .cta-subtle {
+            margin-top: 40px;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            text-align: center;
+        }
+        .cta-subtle a {
+            color: var(--primary-dark);
+            font-weight: 700;
+            border-bottom: 2px solid var(--gold-accent);
+            padding-bottom: 2px;
+            transition: 0.3s;
+        }
+        .cta-subtle a:hover {
+            color: var(--gold-accent);
+        }
+        /* CTA Específico para fundo escuro */
+        .cta-subtle-dark {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-align: center;
+            display: block;
+        }
+        .cta-subtle-dark a {
+            color: var(--gold-accent);
+            font-weight: 700;
+            margin-left: 5px;
+        }
+        .cta-subtle-dark a:hover { text-decoration: underline; }
+
 
         /* --- ÁREAS DE ATUAÇÃO --- */
         .areas-section { padding: 100px 5%; background-color: var(--white); text-align: center; }
@@ -291,8 +325,8 @@
 
         /* Responsividade Mobile */
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 20px; text-align: center; }
-            .brand-container { flex-direction: column; text-align: center; } /* Ajuste Novo */
+            header { flex-direction: column; gap: 20px; text-align: center; position: relative; }
+            .brand-container { flex-direction: column; text-align: center; }
             nav ul { display: none; }
             .hero { flex-direction: column; text-align: center; padding-top: 30px; }
             .hero-content { padding-right: 0; margin-bottom: 50px; }
@@ -319,7 +353,6 @@
                     <span style="color:white; font-weight:bold;">CAFTER PERCY</span>
                 </video>
             </div>
-
             <div class="logo-text">
                 <h2>CAFTER PERCY</h2>
                 <span class="sub-brand">Advocacia Especializada</span>
@@ -329,7 +362,7 @@
 
         <nav>
             <ul>
-                <li><a href="#">Áreas de Atuação</a></li>
+                <li><a href="#triagem">Áreas de Atuação</a></li>
                 <li><a href="#">O Escritório</a></li>
                 <li><a href="https://wa.me/5521999999999" class="btn-header" target="_blank"><i class="fa-brands fa-whatsapp"></i> Análise Gratuita</a></li>
             </ul>
@@ -362,7 +395,7 @@
         </div>
     </section>
 
-    <section class="triage-section">
+    <section class="triage-section" id="triagem">
         <div class="triage-header">
             <h4>Tecnologia Jurídica</h4>
             <h2>Triagem Inicial Inteligente</h2>
@@ -385,6 +418,9 @@
                 <div class="option-card" onclick="selectOption(this)">
                     <div class="option-icon"><i class="fa-solid fa-user-group"></i></div><h3>Social / Cível</h3><p>Família, consumidor e contratos.</p>
                 </div>
+            </div>
+            <div class="cta-subtle">
+                <p>Já identificou sua área? <a href="https://wa.me/5521999999999" target="_blank">Inicie o atendimento digital <i class="fa-brands fa-whatsapp"></i></a></p>
             </div>
         </div>
     </section>
@@ -409,6 +445,9 @@
                 <ul class="feature-list"><li>Família e Sucessões</li><li>Contratos</li><li>Consumidor</li></ul>
             </div>
         </div>
+        <div class="cta-subtle">
+            <p>Seu caso é complexo? <a href="https://wa.me/5521999999999" target="_blank">Converse com nossos especialistas <i class="fa-solid fa-arrow-right"></i></a></p>
+        </div>
     </section>
 
     <section class="about-section">
@@ -423,6 +462,11 @@
             <h2>A Essência do Nosso Trabalho</h2>
             <p>Na Cafter Percy Advocacia, atuando com força em Nova Iguaçu e região, não tratamos apenas de processos, tratamos de vidas. Entendemos que por trás de cada ação trabalhista ou previdenciária existe uma história de luta e um futuro a ser garantido.</p>
             <p>Nossa metodologia de "Onboarding Jurídico" garante que você entenda cada passo do seu processo, com transparência total e comunicação direta.</p>
+            
+            <p style="margin-top: 20px; font-weight: 700; color: #4b5563;">
+                Quer essa dedicação no seu caso? <a href="https://wa.me/5521999999999" target="_blank" style="color: #d4af37; text-decoration: underline;">Agende uma reunião online ou presencial.</a>
+            </p>
+
             <div class="mission-vision">
                 <div class="mv-item">
                     <h4>Missão</h4>
@@ -453,21 +497,26 @@
                 <div class="faq-answer"><p>Você tem até 2 anos após a demissão para entrar com a ação, mas recomendamos iniciar imediatamente.</p></div>
             </div>
         </div>
+        <div class="cta-subtle">
+            <p>Sua dúvida não está aqui? <a href="https://wa.me/5521999999999" target="_blank">Pergunte ao Dr. Cafter no WhatsApp <i class="fa-regular fa-comments"></i></a></p>
+        </div>
     </section>
 
-       <footer>
+    <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <h2>CAFTER PERCY</h2>
                 <span class="sub-footer">Advocacia Especializada</span>
                 <p class="loc-footer">Previdenciário e Trabalhista em Nova Iguaçu - RJ</p>
+                
+                <span class="cta-subtle-dark">
+                    Precisa de ajuda urgente? <a href="https://wa.me/5521999999999" target="_blank">Fale agora</a>
+                </span>
             </div>
             <div class="footer-social">
                 <a href="https://instagram.com/cafterpercy.adv" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                
                 <a href="https://www.linkedin.com/in/cafterpercyadv" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                
-            </div>
+                </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Cafter Percy Advocacia Especializada. Todos os direitos reservados.</p>
